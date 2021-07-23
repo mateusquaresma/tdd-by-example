@@ -9,5 +9,8 @@
         <module name="tdd-by-example" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="tdd-by-example" target="8" />
+    </bytecodeTargetLevel>
   </component>
 </project>
