@@ -20,10 +20,6 @@ public class Money implements Expression {
         this.currency = currency;
     }
 
-    public Money times(int multiplier) {
-        return new Money(this.amount * multiplier, this.currency);
-    }
-
     public String currency() {
         return this.currency;
     }
@@ -46,12 +42,18 @@ public class Money implements Expression {
         return amount + " " + currency;
     }
 
-    public Expression plus(Money addend) {
-        return new Sum(this, addend);
-    }
-
     public Money reduce(Bank bank, String to) {
         int rate = bank.rate(currency, to);
         return new Money(amount / rate, to);
     }
+
+    public Expression plus(Expression addend) {
+        return new Sum(this, addend);
+    }
+
+    public Expression times(int multiplier) {
+        return new Money(this.amount * multiplier, this.currency);
+    }
+
+
 }
